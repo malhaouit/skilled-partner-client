@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 
+// Check if the app is running in development or production
+const API_BASE_URL = import.meta.env.PROD 
+    ? 'https://skilled-partner-backend-c89ab71d0944.herokuapp.com/api'
+    : '/api';
+
 function App() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/emails', {
+    const response = await fetch(`${API_BASE_URL}/emails`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
