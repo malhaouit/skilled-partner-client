@@ -1,42 +1,200 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Global Settings */
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.landing-page {
   text-align: center;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes slideIn {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-out;
+}
+
+.slide-in {
+  animation: slideIn 2s ease-out;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  padding: 120px 20px;
+  color: #fff;
+  overflow: hidden;
+  text-align: center;
+  background-color: #007bff; /* Fallback color in case the image doesn’t load */
+
+  /* Background image settings */
+  background-image: url('./assets/hero-background.png');
+  background-size: cover; /* Keeps the entire image visible without cropping */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents repeating the image */
+}
+
+.hero-section h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+/* Rotating Text Styles */
+.rotating-text {
+  position: relative;
+  height: 2em; /* Adjust height to fit text size */
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.rotating-text p {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slideText 15s infinite; /* Extend duration for smoother visibility */
+  text-align: center;
+  width: 100%;
+}
+
+/* Specific delays for each text */
+.rotating-text p:nth-child(1) {
+  animation-delay: 0s;
+}
+.rotating-text p:nth-child(2) {
+  animation-delay: 3s;
+}
+.rotating-text p:nth-child(3) {
+  animation-delay: 6s;
+}
+.rotating-text p:nth-child(4) {
+  animation-delay: 9s;
+}
+.rotating-text p:nth-child(5) {
+  animation-delay: 12s;
+}
+
+/* Keyframes for smoother sliding effect */
+@keyframes slideText {
+  0%, 10% { 
+    opacity: 1; 
+    transform: translateY(0); /* Start and hold position */
   }
-  to {
-    transform: rotate(360deg);
+  20%, 100% { 
+    opacity: 0; 
+    transform: translateY(-100%); /* Slide out and disappear */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Email Form */
+.email-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.email-form input[type="email"] {
+  padding: 10px;
+  font-size: 1em;
+  width: 250px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* .email-form input[type="email"]:focus {
+  transform: scale(1.05);
+  outline: none;
+} */
+
+.cta-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #0060c7;
+}
+
+/* Success Message */
+.success-message {
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  animation: fadeIn 1s ease-out;
+}
+
+/* How It Works Section */
+.how-it-works {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  animation: fadeIn 1s ease-out;
+}
+
+.how-it-works h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  animation: slideIn 1s ease-out;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.step {
+  width: 200px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step h3 {
+  color: #FF6F00;
+}
+
+.zoom-on-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .steps {
+    flex-direction: column;
+    align-items: center;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  .step {
+    width: 100%;
+  }
 }
